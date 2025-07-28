@@ -163,7 +163,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     renderDesenhistaView = async function(uid, nome) { // Declarando como variável
-        const htmlContent = `<h1>Seu Painel, ${nome}</h1><div class="cards-container"><div class="card"><h2>Sua Meta de Artes</h2><p id="meta-individual-valor" class="data-value">...</p></div><div class="card"><h2>Meta do Grupo</h2><p id="meta-grupo-valor" class="data-value">...</p></div><div id="erros-card" class="card" style="cursor: pointer;"><h2>Detalhes de Erros</h2><p class="data-value" style="font-size: 24px; color: #007bff;">Clique para ver</p></div></div>`;
+        const htmlContent = `<h1>Seu Painel, ${nome}</h1><div class="cards-container"><div class="card"><h2>Sua Meta de Artes</h2><p id="meta-individual-valor" class="data-value">...</p></div><div class="card"><h2>Meta do Grupo</h2><p id="meta-grupo-valor" class="data-value">...</p></div><div id="erros-card" class="card" style="cursor: pointer;"><h2>Detalhes de Erros</h2><p class="data-value" style="font-size: 24px; color: #ff9a03ff;">Clique para ver</p></div></div>`;
         appContent.innerHTML = htmlContent;
         try {
             const metasIndividuaisDoc = await db.collection('metas').doc('individuais').get();
