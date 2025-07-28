@@ -2,14 +2,14 @@
 /* PALETA DE CORES CENTRAL              */
 /* ============================================= */
 :root {
-    --cor-fundo: #f4f7fa;
-    --cor-primaria: #3498db;
-    --cor-primaria-hover: #2980b9;
-    --cor-header-fundo: #2c3e50;
+    --cor-fundo: #000000;
+    --cor-primaria: #ff7300;
+    --cor-primaria-hover: #c25e00;
+    --cor-header-fundo: #ffc400;
     --cor-card-fundo: #ffffff;
-    --cor-texto-principal: #34495e;
+    --cor-texto-principal: #000000;
     --cor-texto-claro: #ffffff;
-    --cor-sombra: rgba(0, 0, 0, 0.08);
+    --cor-sombra: rgba(255, 255, 255, 0.192);
 }
 
 /* ESTILOS GERAIS */
