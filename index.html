@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Acesso</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-body">
+
+    <div class="login-container">
+        <h1>Painel de Desenhistas</h1>
+        <p>Por favor, insira suas credenciais.</p>
+        
+        <input type="text" id="username" placeholder="Nome de Usuário" required>
+        <input type="password" id="password" placeholder="Senha" required>
+        
+        <button id="loginButton">Entrar</button>
+
+        <p id="error-message" class="error"></p>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <script>
+        // ======================================================
+        //  COLE AQUI O SEU OBJETO firebaseConfig
+        //  que você salvou do painel do Firebase
+        // ======================================================
+        const firebaseConfig = {
+            apiKey: "AIzaSyDy5H8ZkemTn9-6l9bM1aTMCoYyUW2W5pM",
+            authDomain: "painel-desenhistas.firebaseapp.com",
+            projectId: "painel-desenhistas",
+            storageBucket: "painel-desenhistas.firebasestorage.app",
+            messagingSenderId: "207293133863",
+            aappId: "1:207293133863:web:49b0231f4eb79eb8484a02",
+            measurementId: "G-T6B0V5SY85"
+        };
+
+        // Inicializa o Firebase
+        firebase.initializeApp(firebaseConfig);
+        
+        // ======================================================
+        //  NOSSA LÓGICA DE LOGIN VIRÁ AQUI
+        // ======================================================
+// Pega as referências dos serviços do Firebase que vamos usar
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Pega as referências dos elementos HTML que vamos manipular
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const loginButton = document.getElementById('loginButton');
+        const errorMessage = document.getElementById('error-message');
+
+        // Adiciona um "escutador" de evento. Quando o botão de login for clicado...
+        loginButton.addEventListener('click', () => {
+            // Pega os valores digitados pelo usuário
+            const username = usernameInput.value;
+            const password = passwordInput.value;
+
+            // Limpa mensagens de erro antigas
+            errorMessage.textContent = '';
+
+            // O TRUQUE DO DOMÍNIO FANTASMA
+            const emailComDominioFantasma = username + '@painel.app';
+            
+            // Tenta fazer o login no Firebase
+            auth.signInWithEmailAndPassword(emailComDominioFantasma, password)
+                .then((userCredential) => {
+                    // SUCESSO! O login foi efetuado.
+                    console.log("Login bem-sucedido!", userCredential.user);
+                    
+                    // Redireciona o usuário para a página principal do painel
+                    // (Essa página ainda não existe, mas vamos criá-la em breve)
+                    window.location.href = 'dashboard.html';
+                })
+                .catch((error) => {
+                    // ERRO! O login falhou.
+                    console.error("Erro no login:", error.code, error.message);
+                    
+                    // Mostra uma mensagem de erro amigável para o usuário
+                    errorMessage.textContent = 'Usuário ou senha inválidos.';
+                });
+        });
+    </script>
+
+</body>
+</html>

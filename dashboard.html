@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Painel de Desenhistas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="dashboard-header">
+     <div class="logo-container">
+        <img src="assets/logo.png" alt="Logo da Empresa" class="logo">
+     </div>
+     <div class="user-container">
+        <span id="userName">...</span>
+        <button id="logoutButton">Sair</button>
+     </div>
+    </header>
+
+    <main id="app-content">
+        <p>Carregando informações...</p>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <script>
+        // ======================================================
+        //  COLE AQUI O SEU OBJETO firebaseConfig
+        // ======================================================
+         const firebaseConfig = {
+            apiKey: "AIzaSyDy5H8ZkemTn9-6l9bM1aTMCoYyUW2W5pM",
+            authDomain: "painel-desenhistas.firebaseapp.com",
+            projectId: "painel-desenhistas",
+            storageBucket: "painel-desenhistas.firebasestorage.app",
+            messagingSenderId: "207293133863",
+            aappId: "1:207293133863:web:49b0231f4eb79eb8484a02",
+            measurementId: "G-T6B0V5SY85"
+        };
+
+        // Inicializa o Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script src="dashboard.js" defer></script>
+
+    <div id="modal-overlay" class="hidden">
+    <div id="modal-content">
+        <button id="modal-close-button">&times;</button>
+        <h2>Detalhes de Erros</h2>
+        <button id="modal-refresh-button" class="secondary-button">Atualizar Dados ↻</button>
+
+    <div id="month-selection-container">
+        <div id="month-selection-container">
+            <p>Selecione o mês que deseja visualizar:</p>
+            <div id="month-buttons">
+                </div>
+        </div>
+        <div id="error-details-container">
+            </div>
+    </div>
+</div>
+
+</body>
+</html>
